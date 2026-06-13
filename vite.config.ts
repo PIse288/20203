@@ -3,8 +3,11 @@ import react from '@vitejs/plugin-react';
 import path from 'node:path';
 
 // https://vitejs.dev/config/
+// base 可通过 VITE_BASE 环境变量覆盖：
+// - Cloudflare Pages（根路径部署）: 默认 '/'
+// - GitHub Pages（子路径部署）: VITE_BASE=/20203/
 export default defineConfig({
-  base: '/20203/',
+  base: process.env.VITE_BASE ?? '/',
   plugins: [
     react(),
     {
